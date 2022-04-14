@@ -1,0 +1,4 @@
+backports.zoneinfo==0.2.1
+psycopg==3.0.11
+pyaml==21.10.1
+PyYAML==6.0
