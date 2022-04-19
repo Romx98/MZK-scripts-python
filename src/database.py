@@ -36,4 +36,3 @@ class Database:
 
     def fetch_by_limit(self, limit=10):
         return self.cursor.fetchmany(limit)
-
