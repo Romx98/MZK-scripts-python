@@ -1,21 +1,21 @@
 import psycopg
 from psycopg.rows import dict_row
 
-from config import db_config
+from config import load_config, db_config
 
 
 class Database:
 
-    TABLE = db_config()['TABLE']['table']
-    SELECT_ROW = db_config()['TABLE']['select_row']
+    TABLE = load_config()['TABLE']['table']
+    SELECT_ROW = load_config()['TABLE']['select_row']
     CURSOR = 'cursorMark'
 
     def __init__(self):
         try:
             query = f'SELECT {self.SELECT_ROW} FROM {self.TABLE}'
-
+            print(db_config())
             self.conn = psycopg.connect(
-                **db_config()['SYSTEM'],
+                **db_config(),
                 row_factory=dict_row
             )
             self.cursor = self.conn.cursor(name=self.CURSOR)
